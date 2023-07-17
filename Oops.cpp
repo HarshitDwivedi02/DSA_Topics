@@ -9,6 +9,16 @@ class Hero {
     public:
     char level;
 
+    Hero(){
+        cout << "Constructor called" << endl;
+    }
+
+    //Paramaterized constructor 
+    Hero(int health ){
+        cout << "this ->" << this << endl;
+        this -> health = health;
+    }
+
     void print(){
         cout << level << endl; // no error 
     }
@@ -31,7 +41,13 @@ class Hero {
 
 int main(){
 
-    Hero ramesh;
+   
+   Hero suresh(70 , 'C');
+
+
+   Hero R(suresh);
+   
+
 
     // //static allocation 
     // Hero a;
