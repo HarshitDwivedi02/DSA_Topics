@@ -40,7 +40,7 @@ cout << endl;
 }
 
 void InsertAtPosition(int position ,int d){
-    
+    Node* temp = position;
 }
 
 int main(){
