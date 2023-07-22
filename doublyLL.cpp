@@ -14,6 +14,16 @@ class Node {
         this -> prev = NULL;
         this -> next = NULL;
     }
+
+    //destructor
+    ~Node(){
+        int val = this->data;
+        if(next != NULL){
+            delete next;
+            next = NULL;
+        }
+        cout << "memory free for node with data " << val << endl;
+    }
 };
 
 // to print or traversal in doubly linked list
@@ -102,6 +112,38 @@ void insertAtPosition(Node* &tail ,Node* &head , int position , int d){
 }
 
 
+void deleteNode(int position , Node* &head ){
+    //deleting first position element
+    if(position == 1){
+        Node* temp = head;
+        temp -> next -> prev = NULL;
+        head = temp -> next;
+        //memory free start node
+        temp ->next = NULL;
+        delete temp;
+    }
+    else{
+        //deleting  any middle and last place elements
+        Node* curr = head;
+        Node* prev = NULL;
+
+        int cnt = 1;
+        while(cnt < position){
+            prev = curr;
+            curr = curr -> next;
+            cnt++;
+        }
+
+        curr -> prev = NULL;
+        prev -> next = curr -> next;
+        curr -> next = NULL;
+
+        delete curr;
+
+    }
+}
+
+
 int main(){
     Node* node1 = new Node(10);
     Node* head = node1;
@@ -133,6 +175,11 @@ int main(){
 
     insertAtPosition(tail , head , 8 , 102);
     print(head);
+
+    deleteNode(8 , head);
+    print(head);
+    cout << "head" << head -> data << endl;
+    cout << "tail" << tail -> data << endl;
 
     
 
