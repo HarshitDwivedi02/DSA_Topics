@@ -39,7 +39,9 @@ node* buildTree(node* root){
 
 // Level Order traversal
 
-void ()
+void levelOrderTraversal(){
+    
+}
 
 int main(){
 
